@@ -1,0 +1,28 @@
+opam-version: "1.2"
+name: "ocaml-argon2"
+version: "0.1"
+maintainer: "Louis Roché <louis@louisroche.net>"
+authors: [ "Louis Roché <louis@louisroche.net>" ]
+license: "MIT"
+dev-repo: "https://github.com/Khady/ocaml-argon2.git"
+bug-reports: "https://github.com/Khady/ocaml-argon2/issues"
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocamlfind" "remove" "argon2"]
+]
+build-test: [
+  ["ocaml" "setup.ml" "-configure" "--enable-tests"]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-test"]
+]
+build-doc: [ "ocaml" "setup.ml" "-doc" ]
+depends: [
+  "ctypes"
+  "ocamlfind" {build}
+  "ppx_deriving" {= "1.0"}
+  "result"
+]

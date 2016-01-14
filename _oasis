@@ -1,0 +1,32 @@
+Name: ocaml-argon2
+Version: 0.1
+Synopsis: OCaml bindings for Argon2 (https://github.com/P-H-C/phc-winner-argon2)
+Authors: Louis Roché <louis@louisroche.net>
+License: MIT
+
+OASISFormat: 0.4
+BuildTools: ocamlbuild
+Plugins: META (0.4), DevFiles (0.4)
+
+Library "argon2"
+  Path: src
+  Modules: Argon2
+  BuildDepends: ctypes, ctypes.foreign, result, ppx_deriving.show
+
+AlphaFeatures: ocamlbuild_more_args
+Document "argon2_api"
+  Type: ocamlbuild (0.4)
+  BuildTools: ocamldoc
+
+  Title: API reference for Argon2
+  PostCommand: cp doc/style.css argon2_api.docdir/
+  XOCamlbuildPath: .
+  XOCamlbuildExtraArgs:
+    "-docflags '-colorize-code -short-functors -charset utf-8'"
+  XOCamlbuildLibraries: argon2
+
+SourceRepository "master"
+  Type:             git
+  Location:         https://github.com/Khady/ocaml-argon2.git
+  Branch:           master
+  Browser:          https://github.com/Khady/ocaml-argon2

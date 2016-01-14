@@ -1,3 +1,5 @@
+(** Ocaml bindings to Argon2. *)
+
 module Argon2_type: sig
   type t =
     | Argon2_d

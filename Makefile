@@ -1,24 +1,41 @@
-# Makefile used for development
+# OASIS_START
+# DO NOT EDIT (digest: a3c674b4239234cbbe53afe090018954)
 
-OB=ocamlbuild -tag debug -classic-display -use-ocamlfind
-ODOCFLAGS=-docflags -colorize-code,-charset,utf8
+SETUP = ocaml setup.ml
 
-lib:
-	$(OB) argon2.cma argon2.cmxa
+build: setup.data
+	$(SETUP) -build $(BUILDFLAGS)
 
-examples: lib
-	$(OB) examples.otarget
+doc: setup.data build
+	$(SETUP) -doc $(DOCFLAGS)
 
-plugin:
-	$(OB) -cflags -I,+ocamldoc -package compiler-libs doc/plugin.cmxs
+test: setup.data build
+	$(SETUP) -test $(TESTFLAGS)
 
-doc: lib plugin
-	$(OB) $(ODOCFLAGS) doc/api.docdir/index.html
-	cp doc/style.css _build/doc/api.docdir/style.css
+all:
+	$(SETUP) -all $(ALLFLAGS)
 
-upload_doc: doc
-	git checkout gh-pages && rm -rf dev/* && cp api.docdir/* dev && \
-	git add --all dev
+install: setup.data
+	$(SETUP) -install $(INSTALLFLAGS)
+
+uninstall: setup.data
+	$(SETUP) -uninstall $(UNINSTALLFLAGS)
+
+reinstall: setup.data
+	$(SETUP) -reinstall $(REINSTALLFLAGS)
 
 clean:
-	$(OB) -clean
+	$(SETUP) -clean $(CLEANFLAGS)
+
+distclean:
+	$(SETUP) -distclean $(DISTCLEANFLAGS)
+
+setup.data:
+	$(SETUP) -configure $(CONFIGUREFLAGS)
+
+configure:
+	$(SETUP) -configure $(CONFIGUREFLAGS)
+
+.PHONY: build doc test all install uninstall reinstall clean distclean configure
+
+# OASIS_STOP

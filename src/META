@@ -1,0 +1,13 @@
+# OASIS_START
+# DO NOT EDIT (digest: 6662b03122d45be82602ebe457727e5f)
+version = "0.1"
+description =
+"OCaml bindings for Argon2 (https://github.com/P-H-C/phc-winner-argon2)"
+requires = "ctypes ctypes.foreign result ppx_deriving.show"
+archive(byte) = "argon2.cma"
+archive(byte, plugin) = "argon2.cma"
+archive(native) = "argon2.cmxa"
+archive(native, plugin) = "argon2.cmxs"
+exists_if = "argon2.cma"
+# OASIS_STOP
+
