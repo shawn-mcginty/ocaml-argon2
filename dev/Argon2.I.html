@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf8" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Argon2.Argon2_ErrorCodes.html">
+<link rel="next" href="Argon2.D.html">
+<link rel="Up" href="Argon2.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Argon2" rel="Chapter" href="Argon2.html"><title>Argon2.I</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Argon2.Argon2_ErrorCodes.html" title="Argon2.Argon2_ErrorCodes">Previous</a>
+&nbsp;<a class="up" href="Argon2.html" title="Argon2">Up</a>
+&nbsp;<a class="post" href="Argon2.D.html" title="Argon2.D">Next</a>
+</div>
+<h1>Module <a href="type_Argon2.I.html">Argon2.I</a></h1>
+
+<pre><span class="keyword">module</span> I: <code class="code"><span class="keyword">sig</span></code> <a href="Argon2.I.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+
+<pre><span id="VALhash_raw"><span class="keyword">val</span> hash_raw</span> : <code class="type">t_cost:int -><br>       m_cost:int -><br>       parallelism:int -><br>       pwd:string -><br>       salt:string -><br>       hash_len:int -> (<a href="Argon2.html#TYPEhash">Argon2.hash</a>, <a href="Argon2.Argon2_ErrorCodes.html#TYPEt">Argon2.Argon2_ErrorCodes.t</a>) Result.result</code></pre><div class="info ">
+Hashes a password with Argon2i, producing a raw hash.<br>
+</div>
+
+<pre><span id="VALhash_encoded"><span class="keyword">val</span> hash_encoded</span> : <code class="type">t_cost:int -><br>       m_cost:int -><br>       parallelism:int -><br>       pwd:string -><br>       salt:string -><br>       hash_len:int -><br>       encoded_len:int -> (<a href="Argon2.html#TYPEencoded">Argon2.encoded</a>, <a href="Argon2.Argon2_ErrorCodes.html#TYPEt">Argon2.Argon2_ErrorCodes.t</a>) Result.result</code></pre><div class="info ">
+Hashes a password with Argon2d, producing an encoded hash.<br>
+</div>
+
+<pre><span id="VALverify"><span class="keyword">val</span> verify</span> : <code class="type">encoded:<a href="Argon2.html#TYPEencoded">Argon2.encoded</a> -><br>       pwd:string -> (bool, <a href="Argon2.Argon2_ErrorCodes.html#TYPEt">Argon2.Argon2_ErrorCodes.t</a>) Result.result</code></pre><div class="info ">
+Verifies a password against an encoded string.<br>
+</div>
+</body></html>
