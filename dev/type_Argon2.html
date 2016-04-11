@@ -10,6 +10,10 @@
 <body>
 <code class="code"><span class="keyword">sig</span><br>
 &nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Argon2_type</span>&nbsp;:&nbsp;<span class="keyword">sig</span>&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Argon2_d</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Argon2_i</span>&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Argon2_version</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">ARGON2_VERSION_10</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">ARGON2_VERSION_13</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">ARGON2_VERSION_NUMBER</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
 &nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Argon2_ErrorCodes</span>&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=<br>
@@ -46,9 +50,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">ARGON2_MISSING_ARGS</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">ARGON2_ENCODING_FAIL</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">ARGON2_DECODING_FAIL</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">ARGON2_THREAD_FAIL</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">ARGON2_DECODING_LENGTH_FAIL</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">ARGON2_VERIFY_MISMATCH</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Other</span>&nbsp;<span class="keyword">of</span>&nbsp;int<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pp&nbsp;:&nbsp;<span class="constructor">Format</span>.formatter&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Argon2</span>.<span class="constructor">Argon2_ErrorCodes</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;show&nbsp;:&nbsp;<span class="constructor">Argon2</span>.<span class="constructor">Argon2_ErrorCodes</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">String</span>.t<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;message&nbsp;:&nbsp;<span class="constructor">Argon2</span>.<span class="constructor">Argon2_ErrorCodes</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;hash&nbsp;=&nbsp;string<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;encoded&nbsp;=&nbsp;string<br>
@@ -107,10 +113,14 @@
 &nbsp;&nbsp;&nbsp;&nbsp;typ:<span class="constructor">Argon2</span>.<span class="constructor">Argon2_type</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;hash_len:int&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;encoded_len:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;version:<span class="constructor">Argon2</span>.<span class="constructor">Argon2_version</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Argon2</span>.hash&nbsp;*&nbsp;<span class="constructor">Argon2</span>.encoded,&nbsp;<span class="constructor">Argon2</span>.<span class="constructor">Argon2_ErrorCodes</span>.t)&nbsp;<span class="constructor">Result</span>.result<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;verify&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;encoded:<span class="constructor">Argon2</span>.encoded&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;pwd:string&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;typ:<span class="constructor">Argon2</span>.<span class="constructor">Argon2_type</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;(bool,&nbsp;<span class="constructor">Argon2</span>.<span class="constructor">Argon2_ErrorCodes</span>.t)&nbsp;<span class="constructor">Result</span>.result<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;encoded_len&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t_cost:int&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;m_cost:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;parallelism:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;salt_len:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;hash_len:int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
 <span class="keyword">end</span></code></body></html>

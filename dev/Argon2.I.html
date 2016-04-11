@@ -26,7 +26,7 @@ Hashes a password with Argon2i, producing a raw hash.<br>
 </div>
 
 <pre><span id="VALhash_encoded"><span class="keyword">val</span> hash_encoded</span> : <code class="type">t_cost:int -><br>       m_cost:int -><br>       parallelism:int -><br>       pwd:string -><br>       salt:string -><br>       hash_len:int -><br>       encoded_len:int -> (<a href="Argon2.html#TYPEencoded">Argon2.encoded</a>, <a href="Argon2.Argon2_ErrorCodes.html#TYPEt">Argon2.Argon2_ErrorCodes.t</a>) Result.result</code></pre><div class="info ">
-Hashes a password with Argon2d, producing an encoded hash.<br>
+Hashes a password with Argon2i, producing an encoded hash.<br>
 </div>
 
 <pre><span id="VALverify"><span class="keyword">val</span> verify</span> : <code class="type">encoded:<a href="Argon2.html#TYPEencoded">Argon2.encoded</a> -><br>       pwd:string -> (bool, <a href="Argon2.Argon2_ErrorCodes.html#TYPEt">Argon2.Argon2_ErrorCodes.t</a>) Result.result</code></pre><div class="info ">

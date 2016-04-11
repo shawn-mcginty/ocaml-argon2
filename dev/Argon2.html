@@ -21,6 +21,7 @@ Ocaml bindings to Argon2.<br>
 <hr width="100%">
 
 <pre><span class="keyword">module</span> <a href="Argon2.Argon2_type.html">Argon2_type</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Argon2.Argon2_type.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span class="keyword">module</span> <a href="Argon2.Argon2_version.html">Argon2_version</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Argon2.Argon2_version.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
 <pre><span class="keyword">module</span> <a href="Argon2.Argon2_ErrorCodes.html">Argon2_ErrorCodes</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Argon2.Argon2_ErrorCodes.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
 <pre><span id="TYPEhash"><span class="keyword">type</span> <code class="type"></code>hash</span> = <code class="type">string</code> </pre>
 
@@ -30,11 +31,15 @@ Ocaml bindings to Argon2.<br>
 
 <pre><span class="keyword">module</span> <a href="Argon2.I.html">I</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Argon2.I.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
 <pre><span class="keyword">module</span> <a href="Argon2.D.html">D</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Argon2.D.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
-<pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type">t_cost:int -><br>       m_cost:int -><br>       parallelism:int -><br>       pwd:string -><br>       salt:string -><br>       typ:<a href="Argon2.Argon2_type.html#TYPEt">Argon2_type.t</a> -><br>       hash_len:int -><br>       encoded_len:int -><br>       (<a href="Argon2.html#TYPEhash">hash</a> * <a href="Argon2.html#TYPEencoded">encoded</a>, <a href="Argon2.Argon2_ErrorCodes.html#TYPEt">Argon2_ErrorCodes.t</a>) Result.result</code></pre><div class="info ">
+<pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type">t_cost:int -><br>       m_cost:int -><br>       parallelism:int -><br>       pwd:string -><br>       salt:string -><br>       typ:<a href="Argon2.Argon2_type.html#TYPEt">Argon2_type.t</a> -><br>       hash_len:int -><br>       encoded_len:int -><br>       version:<a href="Argon2.Argon2_version.html#TYPEt">Argon2_version.t</a> -><br>       (<a href="Argon2.html#TYPEhash">hash</a> * <a href="Argon2.html#TYPEencoded">encoded</a>, <a href="Argon2.Argon2_ErrorCodes.html#TYPEt">Argon2_ErrorCodes.t</a>) Result.result</code></pre><div class="info ">
 Generic function underlying the above ones.<br>
 </div>
 
 <pre><span id="VALverify"><span class="keyword">val</span> verify</span> : <code class="type">encoded:<a href="Argon2.html#TYPEencoded">encoded</a> -><br>       pwd:string -><br>       typ:<a href="Argon2.Argon2_type.html#TYPEt">Argon2_type.t</a> -> (bool, <a href="Argon2.Argon2_ErrorCodes.html#TYPEt">Argon2_ErrorCodes.t</a>) Result.result</code></pre><div class="info ">
 Verifies a password against an encoded string.<br>
+</div>
+
+<pre><span id="VALencoded_len"><span class="keyword">val</span> encoded_len</span> : <code class="type">t_cost:int -><br>       m_cost:int -> parallelism:int -> salt_len:int -> hash_len:int -> int</code></pre><div class="info ">
+Returns the encoded hash length for the given input parameters.<br>
 </div>
 </body></html>
