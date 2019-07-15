@@ -1,0 +1,30 @@
+{
+  "name": "argon2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "esy": {
+    "build": [[ "ocaml", "pkg/pkg.ml", "build", "--dev-pkg", "%{pinned}%" ]],
+    "buildInSource": "_build"
+  },
+  "scripts": {
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@opam/dune": "*",
+    "@opam/ocamlfind": "*",
+    "@opam/ocamlbuild": "*",
+    "@opam/topkg": ">=0.9.0",
+    "@opam/ctypes": ">=0.4.1",
+    "@opam/ctypes-foreign": "*",
+    "@opam/result": "*",
+    "@opam/ppx_deriving": ">=2.0"
+  },
+  "devDependencies": {
+    "ocaml": "~4.7.1"
+  },
+  "peerDependencies": {
+    "ocaml": "~4.6.1"
+  }
+}
